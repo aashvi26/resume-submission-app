@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Already Submitted</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='demo.css') }}">
+    <style>
+        .already-submitted-container {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .warning-icon {
+            font-size: 60px;
+            color: #f44336;
+        }
+
+        .message {
+            font-size: 20px;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        a.home-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 16px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        a.home-link:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container already-submitted-container">
+        <div class="warning-icon">&#9888;</div>
+        <div class="message">
+            You’ve already submitted details with <strong>{{ email }}</strong>.
+        </div>
+        <a class="home-link" href="/">Go Back to Home</a>
+    </div>
+</body>
+</html>

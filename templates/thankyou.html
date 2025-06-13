@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thank You</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='demo.css') }}">
+    <style>
+        .thank-you-container {
+            text-align: center;
+            padding: 40px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin: auto;
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .checkmark-circle {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checkmark {
+            font-size: 50px;
+            color: white;
+        }
+
+        .big-text {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .small-text {
+            font-size: 16px;
+            color: #555;
+            margin-top: 12px;
+        }
+
+        .home-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 16px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .home-link:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container thank-you-container">
+        <div class="checkmark-circle">
+            <div class="checkmark">&#10003;</div>
+        </div>
+        <div class="big-text">Thank You, {{ name }}!</div>
+        <div class="small-text">Your details have been submitted successfully.</div>
+        <a class="home-link" href="/">Submit another response</a>
+    </div>
+</body>
+</html>

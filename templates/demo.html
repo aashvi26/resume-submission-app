@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Candidate</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='demo.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Candidate Form</h2>
+        <form action="/submit" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required placeholder="Enter your name">
+        <p id="name-error" style="color: red; font-size: 0.9em; display: none;">Only letters and spaces allowed.</p>
+        <script>
+            const nameInput = document.getElementById("name");
+            const nameError = document.getElementById("name-error");
+
+            nameInput.addEventListener("input", function () {
+                const original = this.value;
+                const cleaned = original.replace(/[^A-Za-z\s]/g, '');
+
+                if (original !== cleaned) {
+                nameError.style.display = "block";
+                } else {
+                nameError.style.display = "none";
+                }
+
+                this.value = cleaned;
+            });
+         </script>
+
+            <label>Email:</label>
+            <input type="email" name="email" required placeholder="Enter your Email"><br>
+
+            <div class="form-group">
+             <label for="phone">Phone:</label>
+             <input type="tel" name="phone" id="phone" required placeholder="Enter your phone number">
+            </div>
+
+            <p id="phone-error" style="color: red; font-size: 0.9em; display: none;">Only digits allowed.</p>
+
+            <script>
+            const phoneInput = document.getElementById("phone");
+            const phoneError = document.getElementById("phone-error");
+
+            phoneInput.addEventListener("input", function () {
+                const original = this.value;
+                const cleaned = original.replace(/[^0-9]/g, '');
+
+                if (original !== cleaned) {
+                phoneError.style.display = "block";
+                } else {
+                phoneError.style.display = "none";
+                }
+
+                this.value = cleaned;
+            });
+            </script>
+
+
+            <label>Skills:</label>
+            <input type="text" name="skills" required placeholder="Enter your Skills"><br>
+
+            <label for="experience">Experience (in years):</label>
+            <input type="number" name="experience" id="experience" min="0" step="1" required placeholder="e.g., 2">
+            <p id="exp-error" style="color: red; font-size: 0.9em; display: none; margin-top: 4px;">Only numeric values allowed.</p>
+
+            <script>
+            const experienceInput = document.getElementById("experience");
+            const expError = document.getElementById("exp-error");
+
+            experienceInput.addEventListener("keypress", function (e) {
+                const char = String.fromCharCode(e.which);
+                if (!/[0-9]/.test(char)) {
+                e.preventDefault();
+                expError.style.display = "block";
+                } else {
+                expError.style.display = "none";
+                }
+            });
+
+            experienceInput.addEventListener("paste", function (e) {
+                const paste = (e.clipboardData || window.clipboardData).getData('text');
+                if (!/^\d+$/.test(paste)) {
+                e.preventDefault();
+                expError.style.display = "block";
+                }
+            });
+
+            experienceInput.addEventListener("input", function () {
+                if (!/^\d*$/.test(this.value)) {
+                this.value = this.value.replace(/\D/g, '');
+                }
+            });
+            </script>
+
+
+            <label>Resume Link:</label>
+            <input type="text" name="resume" required placeholder="Enter your resume link"><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
